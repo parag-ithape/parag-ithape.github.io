@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parag Ithape – Senior QA Engineer / SDET</title>
+<meta name="description" content="Parag Ithape, Senior QA Engineer / SDET in Pune. Selenium, Playwright, REST Assured, JMeter and CI/CD test automation for enterprise cloud platforms.">
+<meta property="og:title" content="Parag Ithape – Senior QA Engineer / SDET">
+<meta property="og:description" content="Test automation, API and performance testing for enterprise cloud platforms. Open to Senior QA / SDET roles.">
+<meta property="og:url" content="https://parag-ithape.github.io/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f5f8;
+    --card: #ffffff;
+    --ink: #121a2b;
+    --slate: #556173;
+    --rule: #d8dee6;
+    --blue: #2346d6;      /* actions and links */
+    --blue-dark: #1a35a8;
+    --panel: #121a2b;     /* the test run */
+    --panel-line: #26324a;
+    --pass: #3fd39d;
+    --sans: "Schibsted Grotesk", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--blue-dark); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* Top bar */
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  .top .mark { font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; font-size: 18px; }
+  .top nav { display: flex; align-items: center; gap: 28px; }
+  .top nav a { color: var(--slate); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .top nav a:hover { color: var(--ink); }
+  .top nav a.resume { color: var(--blue); border: 1px solid var(--blue); padding: 7px 14px; border-radius: 6px; }
+  .top nav a.resume:hover { background: var(--blue); color: #fff; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1fr 1.02fr; gap: 64px; align-items: center; padding: 56px 0 104px; }
+  .hero h1 { font-size: clamp(52px, 7.4vw, 92px); line-height: 0.95; letter-spacing: -0.045em; font-weight: 800; }
+  .hero .title { margin-top: 18px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .hero .pitch { margin-top: 14px; font-size: 19px; color: var(--slate); max-width: 36ch; line-height: 1.5; }
+  .hero .meta { margin-top: 18px; font-size: 15px; color: var(--slate); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn { display: inline-block; padding: 13px 22px; border-radius: 7px; font-weight: 600; font-size: 16px; text-decoration: none; }
+  .btn.primary { background: var(--blue); color: #fff; }
+  .btn.primary:hover { background: var(--blue-dark); color: #fff; }
+  .btn.ghost { color: var(--ink); border: 1px solid var(--rule); background: var(--card); }
+  .btn.ghost:hover { border-color: var(--slate); color: var(--ink); }
+
+  /* Test run panel: the one loud element */
+  .run { background: var(--panel); color: #dfe6f1; border-radius: 12px; font: 13.5px/1.75 var(--mono); box-shadow: 0 24px 60px -28px rgba(18, 26, 43, 0.55); }
+  .run-head { display: flex; justify-content: space-between; gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--panel-line); color: #8d9ab2; font-size: 12.5px; }
+  .run ol { list-style: none; padding: 16px 20px 4px; }
+  .run li { display: grid; grid-template-columns: 22px 1fr; gap: 4px; opacity: 0; }
+  .run li .ok { color: var(--pass); }
+  .run-foot { margin: 10px 20px 0; padding: 12px 0 16px; border-top: 1px dashed var(--panel-line); opacity: 0; }
+  .run-foot b { color: var(--pass); font-weight: 600; }
+  .run.play li, .run.play .run-foot { animation: show 0.01s forwards; }
+  @keyframes show { to { opacity: 1; } }
+
+  /* Sections */
+  section { padding: 96px 0; }
+  section.alt { background: var(--card); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  h2 { font-size: 40px; letter-spacing: -0.035em; line-height: 1.1; font-weight: 800; }
+  .lede { color: var(--slate); margin-top: 12px; max-width: 64ch; }
+
+  /* Experience */
+  .jobs { margin-top: 56px; }
+  .job { display: grid; grid-template-columns: 240px 1fr; gap: 48px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .job:last-child { border-bottom: 1px solid var(--rule); }
+  .job .when { font-weight: 600; }
+  .job .org { color: var(--slate); font-size: 15px; margin-top: 4px; }
+  .job h3 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.25; }
+  .job ul { margin-top: 14px; padding-left: 20px; max-width: 70ch; }
+  .job li { margin: 7px 0; }
+  .job li::marker { color: var(--blue); }
+
+  /* Projects */
+  .projects { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .project { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 30px; display: flex; flex-direction: column; }
+  .project.feature { grid-column: span 2; background: var(--ink); color: #e6ebf3; border-color: var(--ink); display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+  .project.feature p, .project.feature li { color: #c4cddb; }
+  .project.feature a { color: #9fb4ff; }
+  .project.feature .kind { color: #8d9ab2; }
+  .project .kind { font-size: 14px; color: var(--slate); }
+  .project h3 { font-size: 23px; letter-spacing: -0.02em; line-height: 1.25; margin-top: 4px; }
+  .project p { margin-top: 10px; color: var(--slate); }
+  .project ul { margin-top: 12px; padding-left: 20px; }
+  .project li { margin: 5px 0; }
+  .project .stack { margin-top: auto; padding-top: 18px; font-size: 14px; color: var(--slate); }
+  .project .links { margin-top: 18px; display: flex; gap: 24px; flex-wrap: wrap; font-weight: 600; }
+  .live { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--pass); margin-top: 10px; }
+  .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pass); }
+
+  /* Skills */
+  .skills { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 56px; }
+  .skills h3 { font-size: 17px; font-weight: 700; }
+  .skills p { margin-top: 6px; color: var(--slate); }
+
+  /* Credentials */
+  .creds { margin-top: 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; }
+  .creds h3 { font-size: 20px; letter-spacing: -0.01em; }
+  .creds ul { list-style: none; margin-top: 14px; }
+  .creds li { padding: 12px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; }
+  .creds li span { color: var(--slate); white-space: nowrap; }
+
+  /* Contact */
+  .contact { background: var(--ink); color: #e6ebf3; }
+  .contact h2 { font-size: clamp(38px, 5.4vw, 60px); max-width: 16ch; }
+  .contact .lede { color: #aab5c7; }
+  .contact .free { margin-top: 10px; color: #8d9ab2; font-size: 15px; }
+  .contact-list { margin-top: 44px; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 18px 60px; }
+  .contact-list span { display: block; color: #8d9ab2; font-size: 14px; }
+  .contact-list a { font-size: 18px; font-weight: 600; color: #fff; }
+  .contact-list a:hover { color: #9fb4ff; }
+  .contact .btn.primary { margin-top: 44px; }
+  footer { background: var(--ink); color: #6f7c93; font-size: 14px; padding: 0 0 48px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 44px; padding: 28px 0 72px; }
+    .job, .creds, .project.feature { grid-template-columns: 1fr; gap: 12px; }
+    .creds { gap: 40px; }
+    .projects, .skills { grid-template-columns: 1fr; }
+    .project.feature { grid-column: auto; }
+    .contact-list { grid-template-columns: 1fr 1fr; }
+    .top nav a:not(.resume) { display: none; }
+    section { padding: 72px 0; }
+    h2 { font-size: 34px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 20px; }
+    .run { font-size: 12px; }
+    .run-head span:last-child { display: none; }
+    .contact-list { grid-template-columns: 1fr; }
+    .creds li { flex-direction: column; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .run li, .run-foot { opacity: 1 !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">Parag Ithape</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="resume" href="Parag_Ithape_Resume.pdf" download>Resume (PDF)</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Parag Ithape</h1>
+      <p class="title">Senior QA Engineer / SDET</p>
+      <p class="pitch">I lead QA for enterprise cloud platforms and build Java automation with Selenium and REST Assured that decides whether a release ships, running in CI.</p>
+      <p class="meta">Pune, India. Testing since 2021. ISTQB certified.</p>
+      <div class="ctas">
+        <a class="btn primary" href="Parag_Ithape_Resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="run" id="run" aria-label="Career summary shown as a test run">
+      <div class="run-head"><span>release-check: parag-ithape</span><span>R Systems, Pune</span></div>
+      <ol>
+        <li><span class="ok">✓</span><span>Selenium + Java + TestNG: regression time cut ~30%</span></li>
+        <li><span class="ok">✓</span><span>REST Assured and Postman API automation</span></li>
+        <li><span class="ok">✓</span><span>Leads QA and release sign-off for cloud platforms</span></li>
+        <li><span class="ok">✓</span><span>Cucumber BDD and Page Object Model frameworks</span></li>
+        <li><span class="ok">✓</span><span>JMeter load tests, Datadog monitoring</span></li>
+        <li><span class="ok">✓</span><span>Regression suites running in GitLab CI/CD</span></li>
+        <li><span class="ok">✓</span><span>Playwright + TypeScript for modern web apps</span></li>
+        <li><span class="ok">✓</span><span>Mentors QA engineers on automation practice</span></li>
+      </ol>
+      <p class="run-foot"><b>8 passed, 0 failed.</b> Ready to join your team.</p>
+    </div>
+  </div>
+</div>
+
+<section id="experience" class="alt">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <div class="jobs">
+      <article class="job">
+        <div>
+          <div class="when">Dec 2024 – Present</div>
+          <div class="org">R Systems (formerly Velotio Technologies), Pune</div>
+        </div>
+        <div>
+          <h3>Senior Software Engineer – QA</h3>
+          <ul>
+            <li>Lead QA for enterprise cloud platforms: test strategy, coverage planning, execution and release sign-off.</li>
+            <li>Designed and maintain Selenium WebDriver, Java and TestNG regression frameworks, cutting regression cycle time by about 30%.</li>
+            <li>Built Playwright + TypeScript automation for modern web apps, improving execution speed and stability.</li>
+            <li>Designed combined UI and API validation workflows that catch defects earlier in the cycle.</li>
+            <li>Ran JMeter performance tests and used Datadog dashboards and logs to find and help fix bottlenecks.</li>
+            <li>Integrated automated regression into GitLab CI/CD; mentor QA engineers on automation and testing practice.</li>
+            <li>Built an LLM-powered utility that turns requirements into structured test cases.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div>
+          <div class="when">Oct 2021 – Nov 2024</div>
+          <div class="org">Concentrix, Pune</div>
+        </div>
+        <div>
+          <h3>Quality Assurance Engineer</h3>
+          <ul>
+            <li>Automated critical business workflows with Selenium WebDriver, Java and TestNG, improving regression efficiency by about 25%.</li>
+            <li>Built Cucumber BDD automation shared by QA, developers and business stakeholders.</li>
+            <li>Built and maintained REST API automation with REST Assured and Postman.</li>
+            <li>Ran regression suites in GitLab CI/CD and reported coverage and defects through sprint-level Xray dashboards.</li>
+            <li>Verified data integrity across integrated systems with SQL.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">Platforms I've tested at work, and frameworks I've built that you can open and run.</p>
+    <div class="projects">
+      <article class="project feature">
+        <div>
+          <div class="kind">Public repository</div>
+          <h3>E-commerce API test automation</h3>
+          <div class="live">Tests passing in CI</div>
+          <div class="links">
+            <a href="https://github.com/parag-ithape/ecom-api-test">View code</a>
+            <a href="https://parag-ithape.github.io/ecom-api-test/">Open test report</a>
+          </div>
+        </div>
+        <div>
+          <p>A REST Assured framework for login, products, orders and the full purchase flow of a public e-commerce API.</p>
+          <ul>
+            <li>27 planned cases: smoke, negative, security, contract and end-to-end</li>
+            <li>Found and documented 2 server-side validation defects (500 instead of 400)</li>
+            <li>Masked secrets, self-cleaning test data, nightly GitHub Actions run with Allure report</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="kind">Work project</div>
+        <h3>Acela – IT asset lifecycle and procurement platform</h3>
+        <ul>
+          <li>Own QA for the Quote Module: creation, approval, submission and customer emails</li>
+          <li>Validate AvaTax location-based tax, shipping costs, quantity discounts and margin logic</li>
+          <li>Selenium + TestNG regression across asset and quote workflows</li>
+          <li>Dashboards, SLA tracking and alerts; JMeter and Datadog for performance</li>
+        </ul>
+        <p class="stack">Selenium · TestNG · JMeter · Datadog</p>
+      </article>
+
+      <article class="project">
+        <div class="kind">Work project</div>
+        <h3>CockroachDB Cloud – distributed SQL database platform</h3>
+        <ul>
+          <li>Tested across UI, API and terminal/SQL layers</li>
+          <li>Cluster provisioning for Standard, Basic and Advanced tiers on AWS, GCP and Azure, including pricing and configuration</li>
+          <li>Backup/restore, scaling and provisioning checked end to end</li>
+        </ul>
+        <p class="stack">UI · API · SQL · AWS · GCP · Azure</p>
+      </article>
+
+      <article class="project">
+        <div class="kind">Personal initiative</div>
+        <h3>AI QA framework – LLM-powered test generation</h3>
+        <ul>
+          <li>Analyses requirements and generates structured, tagged test cases in a multi-stage workflow</li>
+          <li>JSON output with metadata for downstream automation</li>
+          <li>Takes raw text or requirement documents as input</li>
+        </ul>
+        <p class="stack">OpenAI API · Playwright · Node.js</p>
+      </article>
+
+      <article class="project">
+        <div class="kind">In progress</div>
+        <h3>Banking performance testing</h3>
+        <p>JMeter load, stress, spike and soak tests on a demo banking app (balance checks, transfers, bill payments) with SLAs, CI and a bottleneck report.</p>
+        <p class="stack">JMeter · Docker · GitHub Actions</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Java automation</h3><p>Selenium WebDriver, Java, TestNG, Cucumber BDD, Page Object Model, Maven</p></div>
+      <div><h3>API and data</h3><p>REST Assured, Postman, SQL, UI/API integration testing</p></div>
+      <div><h3>Modern web</h3><p>Playwright, TypeScript, JavaScript</p></div>
+      <div><h3>Performance and monitoring</h3><p>JMeter, Datadog dashboards, logs and monitors</p></div>
+      <div><h3>CI/CD and tools</h3><p>GitLab CI/CD, GitHub Actions, Git, Jira, Xray, Confluence</p></div>
+      <div><h3>Quality engineering</h3><p>Test strategy and planning, functional, integration, end-to-end and regression testing, release validation, Agile/Scrum</p></div>
+      <div><h3>AI-assisted QA</h3><p>Cursor, Claude, OpenAI API, prompt engineering, LLM test-case generation</p></div>
+    </div>
+
+    <div class="creds">
+      <div>
+        <h3>Certifications</h3>
+        <ul>
+          <li>ISTQB Certified Tester – Foundation Level v4.0 <span>2025</span></li>
+          <li>JMeter Performance Testing – Udemy <span>2025</span></li>
+          <li>Jira Fundamentals – Atlassian <span>2023</span></li>
+          <li>SQL for Testers – LinkedIn Learning <span>2022</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Education</h3>
+        <ul>
+          <li>B.E., Savitribai Phule Pune University <span>2012 – 2016</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Looking for a Senior QA or SDET?</h2>
+    <p class="lede">I'm open to Senior QA Engineer and SDET roles in Pune, Hyderabad or Bengaluru.</p>
+    <p class="free">Also available for freelance test automation, API and performance testing projects.</p>
+    <div class="contact-list">
+      <div><span>Email</span><a href="mailto:qa.parag.ithape@gmail.com">qa.parag.ithape@gmail.com</a></div>
+      <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/parag-ithape">parag-ithape</a></div>
+      <div><span>GitHub</span><a href="https://github.com/parag-ithape">parag-ithape</a></div>
+      <div><span>WhatsApp</span><a href="https://wa.me/918788894004">+91 87888 94004</a></div>
+    </div>
+    <a class="btn primary" href="Parag_Ithape_Resume.pdf" download>Download resume</a>
+  </div>
+</section>
+<footer><div class="wrap">© 2026 Parag Ithape</div></footer>
+
+<script>
+  // One load moment: the release check runs line by line
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var run = document.getElementById('run');
+    var rows = run.querySelectorAll('li');
+    rows.forEach(function (li, i) { li.style.animationDelay = (250 + i * 230) + 'ms'; });
+    run.querySelector('.run-foot').style.animationDelay = (250 + rows.length * 230 + 200) + 'ms';
+    run.classList.add('play');
+  })();
+</script>
+</body>
+</html>
