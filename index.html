@@ -284,10 +284,10 @@
     </div>
   </div>
 <div class="stats reveal">
+    <div class="stat"><b id="yrs" data-count="5" data-decimals="1" data-suffix=" yrs">5 yrs</b><span>Experience in QA and automation</span></div>
     <div class="stat"><b data-count="30" data-suffix="%">30%</b><span>Faster regression cycles</span></div>
-    <div class="stat"><b data-count="2021" data-from="2010">2021</b><span>Testing since</span></div>
     <div class="stat"><b data-count="3">3</b><span>Clouds: AWS, GCP, Azure</span></div>
-    <div class="stat"><b data-count="27">27</b><span>API cases in my public repo</span></div>
+    <div class="stat"><b data-count="4">4</b><span>Certifications incl. ISTQB</span></div>
   </div>
 </div>
 
@@ -487,13 +487,19 @@
     })();
   }
 
+  // Years of experience since Oct 2021, one decimal, so the number never goes stale
+  var start = new Date(2021, 9, 1), now = new Date();
+  var yrs = Math.floor(((now - start) / (365.25 * 24 * 3600 * 1000)) * 10) / 10;
+  var yEl = document.getElementById('yrs');
+  yEl.dataset.count = yrs; yEl.textContent = yrs.toFixed(1) + ' yrs';
+
   // Count-up numbers, run once when the stats come into view
   function countUp(el) {
-    var end = +el.dataset.count, from = +(el.dataset.from || 0), suffix = el.dataset.suffix || '', t0 = null, dur = 1200;
+    var end = +el.dataset.count, from = +(el.dataset.from || 0), suffix = el.dataset.suffix || '', dec = +(el.dataset.decimals || 0), t0 = null, dur = 1200;
     function frame(t) {
       if (!t0) t0 = t;
       var p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(from + (end - from) * eased) + suffix;
+      el.textContent = (from + (end - from) * eased).toFixed(dec) + suffix;
       if (p < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
