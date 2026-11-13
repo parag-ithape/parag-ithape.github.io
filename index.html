@@ -1,523 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Parag Ithape – Senior QA Engineer / SDET</title>
-<meta name="description" content="Parag Ithape, Senior QA Engineer / SDET in Pune. Selenium, Java, REST Assured, JMeter and CI/CD test automation for enterprise cloud platforms.">
-<meta property="og:title" content="Parag Ithape – Senior QA Engineer / SDET">
-<meta property="og:description" content="Java test automation with Selenium and REST Assured, API and performance testing for enterprise cloud platforms. Open to Senior QA / SDET roles.">
-<meta property="og:url" content="https://parag-ithape.github.io/">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0c1424">
-<script>
-  // Apply the saved theme before the page paints
-  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parag Ithape — Senior SDET & Quality Engineer</title>
+<meta name="description" content="Parag Ithape is a Senior QA Engineer / SDET building reliable UI, API and AI-assisted quality engineering workflows with Java, Selenium, Playwright and REST Assured.">
+<meta name="theme-color" content="#0b1220"><meta property="og:type" content="website"><meta property="og:title" content="Parag Ithape — Senior SDET & Quality Engineer"><meta property="og:description" content="Quality engineering, automation frameworks and API testing. Explore selected projects and experience."><meta property="og:url" content="https://parag-ithape.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root, [data-theme="dark"] {
-    --bg: #0c1424;
-    --bg-2: #111b30;
-    --card: #142039;
-    --ink: #e8edf6;
-    --slate: #98a6bd;
-    --rule: #22304d;
-    --blue: #6f8cff;
-    --blue-strong: #4f6dff;
-    --on-blue: #ffffff;
-    --glow: rgba(79, 109, 255, 0.28);
-    --glow-2: rgba(63, 211, 157, 0.12);
-    --panel: #0a1120;
-    --panel-line: #22304d;
-    --panel-text: #dfe6f1;
-    --pass: #3fd39d;
-    --dot: rgba(152, 166, 189, 0.12);
-    --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
-  }
-  [data-theme="light"] {
-    --bg: #f3f5f8;
-    --bg-2: #ffffff;
-    --card: #ffffff;
-    --ink: #121a2b;
-    --slate: #556173;
-    --rule: #d8dee6;
-    --blue: #2346d6;
-    --blue-strong: #2346d6;
-    --on-blue: #ffffff;
-    --glow: rgba(35, 70, 214, 0.14);
-    --glow-2: rgba(63, 211, 157, 0.10);
-    --panel: #121a2b;
-    --panel-line: #26324a;
-    --panel-text: #dfe6f1;
-    --pass: #23b07f;
-    --dot: rgba(18, 26, 43, 0.07);
-    --shadow: 0 24px 60px -28px rgba(18, 26, 43, 0.5);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font: 17px/1.6 "Schibsted Grotesk", system-ui, sans-serif; -webkit-font-smoothing: antialiased; transition: background-color .3s, color .3s; overflow-x: hidden; }
-  a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { text-decoration-thickness: 2px; }
-  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; position: relative; }
-
-  /* Background: dot grid + two slow glows behind the hero */
-  .backdrop { position: absolute; inset: 0 0 auto 0; height: 980px; pointer-events: none; z-index: 0; overflow: hidden;
-    background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 26px 26px;
-    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent); mask-image: linear-gradient(to bottom, #000 40%, transparent); }
-  .backdrop::before, .backdrop::after { content: ""; position: absolute; border-radius: 50%; filter: blur(80px); }
-  .backdrop::before { width: 620px; height: 620px; background: var(--glow); top: -120px; right: -80px; animation: drift 18s ease-in-out infinite alternate; }
-  .backdrop::after { width: 460px; height: 460px; background: var(--glow-2); top: 260px; left: -140px; animation: drift 22s ease-in-out infinite alternate-reverse; }
-  @keyframes drift { to { transform: translate(-60px, 50px) scale(1.08); } }
-  .page { position: relative; z-index: 1; }
-
-  /* Top bar */
-  .top { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid transparent; transition: border-color .3s; }
-  .top.scrolled { border-bottom-color: var(--rule); }
-  .top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; }
-  .mark { font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; font-size: 18px; }
-  .top nav { display: flex; align-items: center; gap: 26px; }
-  .top nav a { color: var(--slate); text-decoration: none; font-size: 15px; font-weight: 500; }
-  .top nav a:hover { color: var(--ink); }
-  .top nav a.resume { color: var(--blue); border: 1px solid var(--blue); padding: 7px 14px; border-radius: 7px; }
-  .top nav a.resume:hover { background: var(--blue-strong); border-color: var(--blue-strong); color: var(--on-blue); }
-  .theme-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--rule); background: var(--card); color: var(--ink); cursor: pointer; display: grid; place-items: center; transition: transform .3s; }
-  .theme-btn:hover { transform: rotate(20deg); }
-  .theme-btn svg { width: 18px; height: 18px; }
-  [data-theme="dark"] .sun, [data-theme="light"] .moon { display: none; }
-
-  /* Hero */
-  .hero { display: grid; grid-template-columns: 1fr 1.02fr; gap: 64px; align-items: center; padding: 64px 0 72px; }
-  .hero h1 { font-size: clamp(52px, 7.4vw, 92px); line-height: 0.95; letter-spacing: -0.045em; font-weight: 800;
-    background: linear-gradient(100deg, var(--ink) 30%, var(--blue) 50%, var(--ink) 70%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 3.2s ease .2s 1 both; }
-  @keyframes sheen { from { background-position: 100% 0; } to { background-position: 0 0; } }
-  .hero .title { margin-top: 18px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
-  .hero .pitch { margin-top: 14px; font-size: 19px; color: var(--slate); max-width: 36ch; line-height: 1.5; }
-  .hero .meta { margin-top: 18px; font-size: 15px; color: var(--slate); display: flex; align-items: center; gap: 10px; }
-  .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--pass); box-shadow: 0 0 0 0 var(--pass); animation: pulse 2s infinite; flex: none; }
-  @keyframes pulse { 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
-  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-  .btn { display: inline-block; padding: 13px 22px; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration: none; transition: transform .2s, box-shadow .2s, background-color .2s; }
-  .btn.primary { background: var(--blue-strong); color: var(--on-blue); box-shadow: 0 10px 30px -10px var(--blue-strong); }
-  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -10px var(--blue-strong); color: var(--on-blue); }
-  .btn.ghost { color: var(--ink); border: 1px solid var(--rule); background: var(--card); }
-  .btn.ghost:hover { transform: translateY(-2px); border-color: var(--slate); color: var(--ink); }
-
-  /* Release-check panel */
-  .run { background: var(--panel); color: var(--panel-text); border: 1px solid var(--panel-line); border-radius: 14px; font: 13.5px/1.75 "JetBrains Mono", ui-monospace, monospace; box-shadow: var(--shadow), 0 0 0 1px rgba(111, 140, 255, 0.06); position: relative; overflow: hidden; }
-  .run-head { display: flex; align-items: center; gap: 10px; padding: 13px 20px; border-bottom: 1px solid var(--panel-line); color: #8d9ab2; font-size: 12.5px; }
-  .run-head .dots { display: flex; gap: 6px; margin-right: 6px; }
-  .run-head .dots i { width: 10px; height: 10px; border-radius: 50%; background: #2a3654; }
-  .run-head .where { margin-left: auto; }
-  .bar { height: 2px; background: var(--panel-line); }
-  .bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue-strong), var(--pass)); }
-  .run ol { list-style: none; padding: 16px 20px 4px; }
-  .run li { display: grid; grid-template-columns: 22px 1fr; gap: 4px; color: #5d6a84; transition: color .25s; }
-  .run li .mk { color: #5d6a84; }
-  .run li.done { color: var(--panel-text); }
-  .run li.done .mk { color: var(--pass); animation: pop .3s ease; }
-  .run li.active .mk { color: #f2b84b; }
-  @keyframes pop { 50% { transform: scale(1.5); } }
-  .run-foot { margin: 10px 20px 0; padding: 12px 0 16px; border-top: 1px dashed var(--panel-line); opacity: 0; transition: opacity .4s; }
-  .run-foot.show { opacity: 1; }
-  .run-foot b { color: var(--pass); font-weight: 600; }
-  .cursor { display: inline-block; width: 8px; height: 15px; background: var(--pass); vertical-align: -2px; margin-left: 4px; animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* Stats strip */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--rule); border-radius: 14px; background: color-mix(in srgb, var(--card) 70%, transparent); margin-bottom: 40px; }
-  .stat { padding: 24px 26px; }
-  .stat + .stat { border-left: 1px solid var(--rule); }
-  .stat b { display: block; font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-  .stat span { color: var(--slate); font-size: 15px; }
-
-  /* Sections */
-  section { padding: 100px 0; }
-  section.alt { background: var(--bg-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-  h2 { font-size: 40px; letter-spacing: -0.035em; line-height: 1.1; font-weight: 800; }
-  .lede { color: var(--slate); margin-top: 12px; max-width: 64ch; }
-
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-
-  /* Experience as a timeline */
-  .jobs { margin-top: 56px; position: relative; }
-  .jobs::before { content: ""; position: absolute; left: 252px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--blue), var(--rule)); }
-  .job { display: grid; grid-template-columns: 240px 1fr; gap: 52px; padding: 0 0 48px; position: relative; }
-  .job::before { content: ""; position: absolute; left: 246px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-2); border: 3px solid var(--blue); }
-  .job:first-child::before { background: var(--blue); box-shadow: 0 0 0 6px var(--glow); }
-  .job .when { font-weight: 600; text-align: right; }
-  .job .org { color: var(--slate); font-size: 15px; margin-top: 4px; text-align: right; }
-  .job h3 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.25; }
-  .job ul { margin-top: 14px; padding-left: 20px; max-width: 68ch; }
-  .job li { margin: 7px 0; }
-  .job li::marker { color: var(--blue); }
-
-  /* Projects */
-  .projects { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .project { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 30px; display: flex; flex-direction: column; transition: transform .25s, border-color .25s, box-shadow .25s; }
-  .project:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 18px 40px -22px var(--blue-strong); }
-  .project.feature { grid-column: span 2; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; background: linear-gradient(135deg, color-mix(in srgb, var(--blue-strong) 18%, var(--card)), var(--card) 60%); }
-  .project .kind { font-size: 14px; color: var(--slate); }
-  .project h3 { font-size: 23px; letter-spacing: -0.02em; line-height: 1.25; margin-top: 4px; }
-  .project p { margin-top: 10px; color: var(--slate); }
-  .project ul { margin-top: 12px; padding-left: 20px; }
-  .project li { margin: 5px 0; }
-  .project .stack { margin-top: auto; padding-top: 18px; font-size: 14px; color: var(--slate); }
-  .project .links { margin-top: 18px; display: flex; gap: 24px; flex-wrap: wrap; font-weight: 600; }
-  .live { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--pass); margin-top: 10px; }
-  .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pass); animation: pulse 2s infinite; box-shadow: 0 0 0 0 var(--pass); }
-
-  /* Skills */
-  .skills { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .skills > div { padding: 22px 24px; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); }
-  .skills > div:first-child, .skills > div:nth-child(2) { border-color: color-mix(in srgb, var(--blue) 55%, var(--rule)); }
-  .skills h3 { font-size: 17px; font-weight: 700; }
-  .skills p { margin-top: 6px; color: var(--slate); }
-
-  /* Credentials */
-  .creds { margin-top: 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; }
-  .creds h3 { font-size: 20px; letter-spacing: -0.01em; }
-  .creds ul { list-style: none; margin-top: 14px; }
-  .creds li { padding: 12px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; }
-  .creds li span { color: var(--slate); white-space: nowrap; }
-
-  /* Contact */
-  .contact { background: radial-gradient(ellipse at 80% 0%, var(--glow), transparent 60%), var(--bg-2); border-top: 1px solid var(--rule); }
-  .contact h2 { font-size: clamp(38px, 5.4vw, 60px); max-width: 16ch; }
-  .contact .free { margin-top: 10px; color: var(--slate); font-size: 15px; }
-  .contact-list { margin-top: 44px; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 18px 60px; }
-  .contact-list span { display: block; color: var(--slate); font-size: 14px; }
-  .contact-list a { font-size: 18px; font-weight: 600; color: var(--ink); }
-  .contact-list a:hover { color: var(--blue); }
-  .contact .btn.primary { margin-top: 44px; }
-  footer { background: var(--bg-2); color: var(--slate); font-size: 14px; padding: 0 0 48px; }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; gap: 44px; padding: 32px 0 56px; }
-    .stats { grid-template-columns: 1fr 1fr; }
-    .stat:nth-child(3) { border-left: 0; }
-    .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
-    .job, .creds, .project.feature { grid-template-columns: 1fr; gap: 12px; }
-    .jobs::before { left: 6px; }
-    .job { padding-left: 32px; }
-    .job::before { left: 0; }
-    .job .when, .job .org { text-align: left; }
-    .creds { gap: 40px; }
-    .projects, .skills { grid-template-columns: 1fr; }
-    .project.feature { grid-column: auto; }
-    .contact-list { grid-template-columns: 1fr 1fr; }
-    .top nav a:not(.resume) { display: none; }
-    section { padding: 72px 0; }
-    h2 { font-size: 34px; }
-  }
-  @media (max-width: 480px) {
-    body { font-size: 16px; }
-    .wrap { padding: 0 20px; }
-    .run { font-size: 12px; }
-    .run-head .where { display: none; }
-    .stat { padding: 18px; }
-    .stat b { font-size: 28px; }
-    .contact-list { grid-template-columns: 1fr; }
-    .creds li { flex-direction: column; gap: 2px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-    .reveal { opacity: 1; transform: none; }
-    .hero h1 { color: var(--ink); background: none; }
-  }
+:root{color-scheme:dark;--bg:#0b1220;--surface:#111c30;--card:#14223a;--ink:#edf2fc;--muted:#9baac2;--line:#263752;--blue:#8299ff;--blue2:#5e78fa;--green:#54d6a7;--amber:#f0bf69;--shadow:0 28px 80px #02071388}
+[data-theme=light]{color-scheme:light;--bg:#f4f6fa;--surface:#fff;--card:#fff;--ink:#121c30;--muted:#5d6a7d;--line:#dce3ee;--blue:#3856d9;--blue2:#2848d4;--green:#148a67;--amber:#99620d;--shadow:0 24px 70px #24314a20}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "DM Sans",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.wrap{width:min(1120px,calc(100% - 44px));margin:auto}.mono,.eyebrow,.tag,.metric small,.project-kicker{font-family:"JetBrains Mono",monospace}.ambient{position:absolute;inset:0 0 auto;height:820px;pointer-events:none;overflow:hidden;background-image:radial-gradient(#91a5d51b 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(#000 30%,transparent)}.ambient:before{content:"";position:absolute;width:600px;height:600px;right:-120px;top:-180px;background:#526bf94a;filter:blur(100px);border-radius:50%}.ambient:after{content:"";position:absolute;width:420px;height:420px;left:-160px;top:260px;background:#1bbf9840;filter:blur(100px);border-radius:50%}.page{position:relative}
+header{height:74px;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:-.04em;font-size:19px}.brand span{color:var(--blue)}.navlinks{display:flex;align-items:center;gap:24px}.navlinks a{color:var(--muted);font-size:14px;font-weight:600}.navlinks a:hover{color:var(--ink)}.navtools{display:flex;gap:10px;align-items:center}.theme,.menu{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:40px;height:40px;cursor:pointer;font-size:17px}.menu{display:none}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:94px 0 74px;min-height:590px}.eyebrow{font-size:12px;color:var(--green);letter-spacing:.13em;text-transform:uppercase;font-weight:600}.hero h1{font-size:clamp(48px,7.2vw,82px);line-height:.99;letter-spacing:-.065em;margin:20px 0 16px}.hero h1 span{display:block;color:var(--blue)}.role{font-size:20px;font-weight:700;letter-spacing:-.02em}.intro{color:var(--muted);font-size:18px;max-width:58ch;margin:14px 0 0}.availability{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:14px;margin:22px 0}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px #54d6a71c}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;padding:12px 18px;font-weight:700;font-size:14px;border:1px solid var(--line);transition:.2s}.btn.primary{background:var(--blue2);border-color:var(--blue2);color:white;box-shadow:0 12px 30px #5e78fa35}.btn:hover{transform:translateY(-2px);border-color:var(--blue)}.btn.secondary{background:var(--card)}
+.console{background:#080f1c;border:1px solid #2a3c5a;border-radius:17px;box-shadow:var(--shadow);overflow:hidden;color:#d9e4f6;font:12px/1.9 "JetBrains Mono",monospace}.console-top{display:flex;align-items:center;gap:9px;padding:14px 17px;border-bottom:1px solid #20304a;color:#91a3c0}.lights{display:flex;gap:6px}.lights i{width:9px;height:9px;border-radius:50%;background:#44516a}.console-title{margin-left:8px}.console-body{padding:24px}.console-label{color:#8a9bb8;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.console h3{font-size:19px;letter-spacing:-.03em;margin:8px 0 18px;color:#f0f4fc}.flow{display:grid;gap:10px}.flowrow{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid #1c2c45;background:#0d1728;border-radius:9px}.num{color:#7f96ff}.flowrow strong{font-weight:500}.flowrow small{margin-left:auto;color:#7e91ae}.flowrow:last-child small{color:#65d8aa}.console-foot{margin-top:19px;padding-top:15px;border-top:1px dashed #2c3d58;color:#94a8c5}.console-foot b{color:#65d8aa;font-weight:500}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:15px;background:var(--surface);margin-bottom:20px}.metric{padding:23px 25px}.metric+.metric{border-left:1px solid var(--line)}.metric strong{display:block;font-size:29px;letter-spacing:-.05em}.metric small{display:block;color:var(--muted);font-size:10px;letter-spacing:.07em;text-transform:uppercase;margin-top:4px}
+section{padding:88px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}.section-title{font-size:clamp(32px,4vw,45px);line-height:1.08;letter-spacing:-.055em;margin:0}.section-copy{max-width:560px;color:var(--muted);margin:12px 0 0}.section-index{font:12px "JetBrains Mono";color:var(--blue)}.alt{background:var(--surface);border-block:1px solid var(--line)}.timeline{display:grid;gap:22px;margin-top:44px}.job{display:grid;grid-template-columns:230px 1fr;gap:50px;padding:0 0 28px;border-bottom:1px solid var(--line)}.job:last-child{border-bottom:0;padding-bottom:0}.job-date{color:var(--blue);font:12px "JetBrains Mono";padding-top:7px}.job-company{font-size:13px;color:var(--muted);margin-top:7px}.job h3{margin:0;font-size:21px;letter-spacing:-.025em}.job ul{padding-left:18px;color:var(--muted);margin:14px 0 0}.job li{padding:3px 0}.job li::marker{color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.project{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:25px;display:flex;flex-direction:column;min-height:285px;transition:transform .2s,border-color .2s,box-shadow .2s}.project:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 20px 45px #0002}.project.featured{grid-column:span 2;background:linear-gradient(115deg,color-mix(in srgb,var(--blue2) 16%,var(--card)),var(--card) 65%);min-height:260px}.project-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.project-kicker{font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:.1em}.status{font-size:10px;color:var(--green);border:1px solid color-mix(in srgb,var(--green) 40%,transparent);padding:4px 8px;border-radius:30px}.project h3{font-size:21px;line-height:1.25;letter-spacing:-.035em;margin:15px 0 8px}.project p{color:var(--muted);font-size:14px;margin:0}.project ul{padding-left:18px;margin:13px 0;color:var(--muted);font-size:13px}.project li{padding:2px 0}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:18px}.tag{font-size:10px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 7px}.project-actions{display:flex;gap:18px;margin-top:18px;font-size:13px;font-weight:700}.project-actions a{color:var(--blue)}.project-actions a:hover{text-decoration:underline;text-underline-offset:4px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:34px}.skill{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:20px}.skill h3{font-size:15px;margin:0 0 8px}.skill p{font-size:13px;color:var(--muted);margin:0}.credentials{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;margin-top:50px}.credentials h3{font-size:17px;margin:0 0 13px}.cred{padding:12px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-size:13px}.cred span{color:var(--muted);text-align:right}.note{font-size:12px;color:var(--muted);margin-top:13px}
+.contactbox{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:38px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,color-mix(in srgb,var(--blue2) 14%,var(--surface)),var(--surface))}.contactbox h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.05em;line-height:1.06;margin:0}.contactbox p{color:var(--muted);margin:12px 0 0}.contactlinks{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:22px}.contactlinks a{font-size:13px;color:var(--blue);font-weight:700}.contact-actions{display:flex;flex-direction:column;gap:10px;min-width:160px}footer{padding:30px 0 42px;color:var(--muted);font-size:12px}.footerline{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:20px}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:36px;padding:70px 0 48px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(3){border-left:0}.metric:nth-child(n+3){border-top:1px solid var(--line)}.skills{grid-template-columns:repeat(2,1fr)}.job{grid-template-columns:1fr;gap:8px}.credentials{gap:30px}.contactbox{grid-template-columns:1fr}.contact-actions{flex-direction:row;flex-wrap:wrap}.navlinks{display:none;position:absolute;top:73px;left:0;right:0;background:var(--surface);padding:18px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:14px}.navlinks.open{display:flex}.menu{display:block}}
+@media(max-width:560px){.wrap{width:min(100% - 32px,1120px)}.hero{padding-top:55px}.hero h1{font-size:55px}.intro{font-size:16px}.console-body{padding:16px}.flowrow{font-size:10px;padding:9px}.metrics{border-radius:12px}.metric{padding:17px}.metric strong{font-size:25px}.metric small{font-size:9px}.grid,.skills,.credentials{grid-template-columns:1fr}.project.featured{grid-column:auto}.project{min-height:0}.section-head{display:block}section{padding:66px 0}.contactbox{padding:25px}.footerline{display:block}.footerline span{display:block;margin-top:6px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
-<body>
-
-<div class="backdrop" aria-hidden="true"></div>
-<div class="page">
-<header class="top" id="top">
-  <div class="wrap">
-    <a class="mark" href="#">Parag Ithape</a>
-    <nav aria-label="Sections">
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="resume" href="Parag_Ithape_Automation_QA_Resume.pdf" download>Resume (PDF)</a>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch between dark and light theme">
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-    </nav>
-  </div>
-</header>
-
-<div class="wrap">
-  <div class="hero">
-    <div>
-      <h1>Parag Ithape</h1>
-      <p class="title">Senior QA Engineer / SDET</p>
-      <p class="pitch">I lead QA for enterprise cloud platforms and build Java automation with Selenium and REST Assured that decides whether a release ships, running in CI.</p>
-      <p class="meta"><span class="pulse"></span>Open to Senior QA / SDET roles. Pune, India.</p>
-      <div class="ctas">
-        <a class="btn primary" href="Parag_Ithape_Automation_QA_Resume.pdf" download>Download resume</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
-      </div>
-    </div>
-
-    <div class="run" id="run" aria-label="Career summary shown as a test run">
-      <div class="run-head"><span class="dots"><i></i><i></i><i></i></span><span>release-check: parag-ithape</span><span class="where">R Systems, Pune</span></div>
-      <div class="bar"><span id="bar"></span></div>
-      <ol>
-        <li><span class="mk">○</span><span>Selenium + Java + TestNG: regression time cut ~30%</span></li>
-        <li><span class="mk">○</span><span>REST Assured and Postman API automation</span></li>
-        <li><span class="mk">○</span><span>Leads QA and release sign-off for cloud platforms</span></li>
-        <li><span class="mk">○</span><span>Cucumber BDD and Page Object Model frameworks</span></li>
-        <li><span class="mk">○</span><span>JMeter load tests, Datadog monitoring</span></li>
-        <li><span class="mk">○</span><span>Regression suites running in GitLab CI/CD</span></li>
-        <li><span class="mk">○</span><span>Playwright + TypeScript for modern web apps</span></li>
-        <li><span class="mk">○</span><span>Mentors QA engineers on automation practice</span></li>
-      </ol>
-      <p class="run-foot" id="runFoot"><b>8 passed, 0 failed.</b> Ready to join your team.<span class="cursor"></span></p>
-    </div>
-  </div>
-<div class="stats reveal">
-    <div class="stat"><b id="yrs" data-count="5" data-decimals="1" data-suffix=" yrs">5 yrs</b><span>Experience in QA and automation</span></div>
-    <div class="stat"><b data-count="30" data-suffix="%">30%</b><span>Faster regression cycles</span></div>
-    <div class="stat"><b data-count="3">3</b><span>Clouds: AWS, GCP, Azure</span></div>
-    <div class="stat"><b data-count="4">4</b><span>Certifications incl. ISTQB</span></div>
-  </div>
+<body><div class="ambient" aria-hidden="true"></div><div class="page">
+<header><div class="wrap nav"><a class="brand" href="#home">PI<span>.</span></a><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Expertise</a><a href="#contact">Contact</a><a href="Parag_Ithape_Automation_QA_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></nav><div class="navtools"><button class="theme" id="theme" aria-label="Toggle colour theme" title="Toggle theme">☼</button><button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button></div></div></header>
+<main id="home"><div class="wrap">
+<section class="hero" style="padding-top:94px;padding-bottom:70px">
+<div><p class="eyebrow">Quality engineering · Pune, India</p><h1>Parag <span>Ithape.</span></h1><p class="role">Senior QA Engineer / SDET</p><p class="intro">I build dependable UI and API automation, strengthen release confidence, and bring a systems mindset to quality engineering—from test strategy to CI feedback.</p><p class="availability"><i class="pulse"></i>Open to Senior QA Engineer and SDET opportunities</p><div class="actions"><a class="btn primary" href="Parag_Ithape_Automation_QA_Resume.pdf" target="_blank" rel="noopener">View resume <span>↗</span></a><a class="btn secondary" href="#projects">Explore projects ↓</a></div></div>
+<div class="console" aria-label="Quality engineering workflow overview"><div class="console-top"><span class="lights"><i></i><i></i><i></i></span><span class="console-title">quality-engineering / workflow</span><span style="margin-left:auto;color:#8b9db8">OVERVIEW</span></div><div class="console-body"><div class="console-label">How I approach a release</div><h3>Build confidence at every layer.</h3><div class="flow"><div class="flowrow"><span class="num">01</span><strong>Understand requirements</strong><small>Scope</small></div><div class="flowrow"><span class="num">02</span><strong>Design UI + API coverage</strong><small>Strategy</small></div><div class="flowrow"><span class="num">03</span><strong>Automate critical journeys</strong><small>Frameworks</small></div><div class="flowrow"><span class="num">04</span><strong>Run in CI and inspect signals</strong><small>Feedback</small></div><div class="flowrow"><span class="num">05</span><strong>Report risk and release readiness</strong><small>Quality</small></div></div><div class="console-foot"><b>✓</b> Practical engineering. Clear evidence. Better releases.</div></div></div>
+</section>
+<div class="metrics" aria-label="Professional overview"><div class="metric"><strong>4.5+ yrs</strong><small>QA & automation experience</small></div><div class="metric"><strong>~30%</strong><small>Reported regression time reduction</small></div><div class="metric"><strong>UI · API</strong><small>Automation coverage</small></div><div class="metric"><strong>CI/CD</strong><small>Continuous quality feedback</small></div></div>
 </div>
-
-<section id="experience" class="alt">
-  <div class="wrap">
-    <h2 class="reveal">Experience</h2>
-    <div class="jobs">
-      <article class="job reveal">
-        <div>
-          <div class="when">Dec 2024 – Present</div>
-          <div class="org">R Systems (formerly Velotio Technologies), Pune</div>
-        </div>
-        <div>
-          <h3>Senior Software Engineer – QA</h3>
-          <ul>
-            <li>Lead QA for enterprise cloud platforms: test strategy, coverage planning, execution and release sign-off.</li>
-            <li>Designed and maintain Selenium WebDriver, Java and TestNG regression frameworks, cutting regression cycle time by about 30%.</li>
-            <li>Built Playwright + TypeScript automation for modern web apps, improving execution speed and stability.</li>
-            <li>Designed combined UI and API validation workflows that catch defects earlier in the cycle.</li>
-            <li>Ran JMeter performance tests and used Datadog dashboards and logs to find and help fix bottlenecks.</li>
-            <li>Integrated automated regression into GitLab CI/CD; mentor QA engineers on automation and testing practice.</li>
-            <li>Built an LLM-powered utility that turns requirements into structured test cases.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="job reveal">
-        <div>
-          <div class="when">Oct 2021 – Nov 2024</div>
-          <div class="org">Concentrix, Pune</div>
-        </div>
-        <div>
-          <h3>Quality Assurance Engineer</h3>
-          <ul>
-            <li>Automated critical business workflows with Selenium WebDriver, Java and TestNG, improving regression efficiency by about 25%.</li>
-            <li>Built Cucumber BDD automation shared by QA, developers and business stakeholders.</li>
-            <li>Built and maintained REST API automation with REST Assured and Postman.</li>
-            <li>Ran regression suites in GitLab CI/CD and reported coverage and defects through sprint-level Xray dashboards.</li>
-            <li>Verified data integrity across integrated systems with SQL.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <h2 class="reveal">Projects</h2>
-    <p class="lede">Platforms I've tested at work, and frameworks I've built that you can open and run.</p>
-    <div class="projects">
-      <article class="project feature reveal">
-        <div>
-          <div class="kind">Public repository</div>
-          <h3>E-commerce API test automation</h3>
-          <div class="live">Tests passing in CI</div>
-          <div class="links">
-            <a href="https://github.com/parag-ithape/ecom-api-test">View code</a>
-            <a href="https://parag-ithape.github.io/ecom-api-test/">Open test report</a>
-          </div>
-        </div>
-        <div>
-          <p>A REST Assured framework for login, products, orders and the full purchase flow of a public e-commerce API.</p>
-          <ul>
-            <li>27 planned cases: smoke, negative, security, contract and end-to-end</li>
-            <li>Found and documented 2 server-side validation defects (500 instead of 400)</li>
-            <li>Masked secrets, self-cleaning test data, nightly GitHub Actions run with Allure report</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="project reveal">
-        <div class="kind">Work project</div>
-        <h3>Acela – IT asset lifecycle and procurement platform</h3>
-        <ul>
-          <li>Own QA for the Quote Module: creation, approval, submission and customer emails</li>
-          <li>Validate AvaTax location-based tax, shipping costs, quantity discounts and margin logic</li>
-          <li>Selenium + TestNG regression across asset and quote workflows</li>
-          <li>Dashboards, SLA tracking and alerts; JMeter and Datadog for performance</li>
-        </ul>
-        <p class="stack">Selenium · TestNG · JMeter · Datadog</p>
-      </article>
-
-      <article class="project reveal">
-        <div class="kind">Work project</div>
-        <h3>CockroachDB Cloud – distributed SQL database platform</h3>
-        <ul>
-          <li>Tested across UI, API and terminal/SQL layers</li>
-          <li>Cluster provisioning for Standard, Basic and Advanced tiers on AWS, GCP and Azure, including pricing and configuration</li>
-          <li>Backup/restore, scaling and provisioning checked end to end</li>
-        </ul>
-        <p class="stack">UI · API · SQL · AWS · GCP · Azure</p>
-      </article>
-
-      <article class="project reveal">
-        <div class="kind">Personal initiative</div>
-        <h3>AI QA framework – LLM-powered test generation</h3>
-        <ul>
-          <li>Analyses requirements and generates structured, tagged test cases in a multi-stage workflow</li>
-          <li>JSON output with metadata for downstream automation</li>
-          <li>Takes raw text or requirement documents as input</li>
-        </ul>
-        <p class="stack">OpenAI API · Playwright · Node.js</p>
-      </article>
-
-      <article class="project reveal">
-        <div class="kind">In progress</div>
-        <h3>Banking performance testing</h3>
-        <p>JMeter load, stress, spike and soak tests on a demo banking app (balance checks, transfers, bill payments) with SLAs, CI and a bottleneck report.</p>
-        <p class="stack">JMeter · Docker · GitHub Actions</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="skills" class="alt">
-  <div class="wrap">
-    <h2 class="reveal">Skills</h2>
-    <div class="skills reveal">
-      <div><h3>Java automation</h3><p>Selenium WebDriver, Java, TestNG, Cucumber BDD, Page Object Model, Maven</p></div>
-      <div><h3>API and data</h3><p>REST Assured, Postman, SQL, UI/API integration testing</p></div>
-      <div><h3>Modern web</h3><p>Playwright, TypeScript, JavaScript</p></div>
-      <div><h3>Performance and monitoring</h3><p>JMeter, Datadog dashboards, logs and monitors</p></div>
-      <div><h3>CI/CD and tools</h3><p>GitLab CI/CD, GitHub Actions, Git, Jira, Xray, Confluence</p></div>
-      <div><h3>Quality engineering</h3><p>Test strategy and planning, functional, integration, end-to-end and regression testing, release validation, Agile/Scrum</p></div>
-      <div><h3>AI-assisted QA</h3><p>Cursor, Claude, OpenAI API, prompt engineering, LLM test-case generation</p></div>
-    </div>
-
-    <div class="creds reveal">
-      <div>
-        <h3>Certifications</h3>
-        <ul>
-          <li>ISTQB Certified Tester – Foundation Level v4.0 <span>2025</span></li>
-          <li>JMeter Performance Testing – Udemy <span>2025</span></li>
-          <li>Jira Fundamentals – Atlassian <span>2023</span></li>
-          <li>SQL for Testers – LinkedIn Learning <span>2022</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Education</h3>
-        <ul>
-          <li>B.E., Savitribai Phule Pune University <span>2012 – 2016</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="wrap">
-    <h2>Looking for a Senior QA or SDET?</h2>
-    <p class="lede">I'm open to Senior QA Engineer and SDET roles in Pune, Hyderabad or Bengaluru.</p>
-    <p class="free">Also available for freelance test automation, API and performance testing projects.</p>
-    <div class="contact-list">
-      <div><span>Email</span><a href="mailto:qa.parag.ithape@gmail.com">qa.parag.ithape@gmail.com</a></div>
-      <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/parag-ithape">parag-ithape</a></div>
-      <div><span>GitHub</span><a href="https://github.com/parag-ithape">parag-ithape</a></div>
-      <div><span>WhatsApp</span><a href="https://wa.me/918788894004">+91 87888 94004</a></div>
-    </div>
-    <a class="btn primary" href="Parag_Ithape_Automation_QA_Resume.pdf" download>Download resume</a>
-  </div>
-</section>
-<footer><div class="wrap">© 2026 Parag Ithape</div></footer>
+<section id="experience" class="alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Career history</p><h2 class="section-title">Experience</h2><p class="section-copy">Quality engineering across enterprise cloud and business platforms.</p></div><span class="section-index">01 / 04</span></div>
+<div class="timeline">
+<article class="job"><div><div class="job-date">DEC 2024 — PRESENT</div><div class="job-company">R Systems · formerly Velotio Technologies · Pune</div></div><div><h3>Senior Software Engineer — QA</h3><ul><li>Lead QA activities for enterprise cloud platforms, including test planning, coverage, execution and release validation.</li><li>Design and maintain Selenium WebDriver, Java and TestNG regression automation; reported approximately 30% reduction in regression cycle time.</li><li>Build Playwright + TypeScript automation for modern web applications.</li><li>Combine UI and API validation to identify issues earlier in the delivery cycle.</li><li>Run JMeter performance tests and use Datadog dashboards and logs to investigate application behaviour.</li><li>Integrate automated regression into GitLab CI/CD and support QA engineers with automation practices.</li><li>Develop an LLM-assisted utility to turn requirements into structured test cases.</li></ul></div></article>
+<article class="job"><div><div class="job-date">OCT 2021 — NOV 2024</div><div class="job-company">Concentrix · Pune</div></div><div><h3>Quality Assurance Engineer</h3><ul><li>Automated critical business workflows using Selenium WebDriver, Java and TestNG, contributing to approximately 25% improvement in regression efficiency.</li><li>Developed and maintained Cucumber BDD automation and reusable Page Object Model components.</li><li>Created and maintained REST API checks using REST Assured and Postman.</li><li>Executed regression suites through GitLab CI/CD and managed test coverage and defects using Jira and Xray.</li><li>Validated integrated-system data with SQL.</li></ul></div></article>
+</div></div></section>
+<section id="projects"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Selected engineering work</p><h2 class="section-title">Projects that show how I test.</h2><p class="section-copy">A mix of hands-on frameworks and quality engineering initiatives. Open the repositories to inspect implementation details.</p></div><span class="section-index">02 / 04</span></div>
+<div class="grid">
+<article class="project featured"><div class="project-top"><span class="project-kicker">01 · Public repository</span><span class="status">Hands-on framework</span></div><h3>E-commerce API test automation</h3><p>Java + REST Assured framework for authentication, product management, orders and an end-to-end purchase workflow.</p><ul><li>27 documented scenarios across smoke, negative, security, contract and E2E testing.</li><li>Known API validation defects are captured in the test plan; related assertions are disabled pending fixes.</li><li>Layered API clients, reusable specifications, secret masking, test-data cleanup and Allure reporting.</li><li>GitHub Actions workflow with environment-based credentials.</li></ul><div class="tags"><span class="tag">Java 17</span><span class="tag">REST Assured</span><span class="tag">TestNG</span><span class="tag">Allure</span><span class="tag">GitHub Actions</span></div><div class="project-actions"><a href="https://github.com/parag-ithape/ecom-api-test" target="_blank" rel="noopener">Source code ↗</a><a href="https://parag-ithape.github.io/ecom-api-test/" target="_blank" rel="noopener">Test report ↗</a></div></article>
+<article class="project"><div class="project-top"><span class="project-kicker">02 · Public repository</span><span class="status">AI-assisted QA</span></div><h3>AI QA automation framework</h3><p>LLM-assisted requirement analysis and test-case generation with structured outputs and review checkpoints.</p><ul><li>Text and DOCX requirement inputs.</li><li>Module analysis and generated JSON test-case artifacts.</li><li>Local study mode with mock requirement fixtures.</li><li>Documented phased roadmap and review flow.</li></ul><div class="tags"><span class="tag">Node.js</span><span class="tag">LLMs</span><span class="tag">JSON</span><span class="tag">Agent workflow</span></div><div class="project-actions"><a href="https://github.com/parag-ithape/ai-qa-automation-framework" target="_blank" rel="noopener">Source code ↗</a></div></article>
+<article class="project"><div class="project-top"><span class="project-kicker">03 · Public repository</span><span class="status">Web automation</span></div><h3>Playwright automation framework</h3><p>Cross-browser automation foundation with BDD workflows and reporting.</p><ul><li>Playwright with JavaScript and TypeScript support.</li><li>Cucumber feature files, reusable page objects and hooks.</li><li>Tag-based execution and Allure reporting.</li></ul><div class="tags"><span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Cucumber</span><span class="tag">Allure</span></div><div class="project-actions"><a href="https://github.com/parag-ithape/playwright-automation-framework" target="_blank" rel="noopener">Source code ↗</a></div></article>
+<article class="project"><div class="project-top"><span class="project-kicker">04 · Public repository</span><span class="status">BDD automation</span></div><h3>Cucumber BDD automation framework</h3><p>Java-based UI automation using reusable BDD patterns and maintainable test structure.</p><ul><li>Feature files and reusable step definitions.</li><li>Page Object Model and hooks.</li><li>Parallel execution support and Maven project setup.</li></ul><div class="tags"><span class="tag">Java</span><span class="tag">Selenium</span><span class="tag">Cucumber</span><span class="tag">TestNG</span><span class="tag">Maven</span></div><div class="project-actions"><a href="https://github.com/parag-ithape/cucumber-bdd-automation-framework" target="_blank" rel="noopener">Source code ↗</a></div></article>
+<article class="project"><div class="project-top"><span class="project-kicker">05 · Public repository</span><span class="status">Java foundations</span></div><h3>Selenium Java practice</h3><p>Hands-on examples covering core WebDriver interactions, alerts, TestNG and Page Object Model concepts.</p><div class="tags"><span class="tag">Java</span><span class="tag">Selenium WebDriver</span><span class="tag">TestNG</span><span class="tag">POM</span></div><div class="project-actions"><a href="https://github.com/parag-ithape/selenium-java-practice" target="_blank" rel="noopener">Source code ↗</a></div></article>
+<article class="project"><div class="project-top"><span class="project-kicker">06 · Separate repository</span><span class="status">Performance testing</span></div><h3>JMeter performance testing</h3><p>A separate performance-testing workspace. The repository is currently private, so its code is not publicly inspectable from this portfolio.</p><div class="tags"><span class="tag">JMeter</span><span class="tag">Performance testing</span></div><div class="project-actions"><a href="https://github.com/parag-ithape" target="_blank" rel="noopener">GitHub profile ↗</a></div></article>
+</div></div></section>
+<section id="skills" class="alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Tools and methods</p><h2 class="section-title">Technical expertise</h2><p class="section-copy">A practical toolkit for designing coverage, automating critical paths and making test feedback useful.</p></div><span class="section-index">03 / 04</span></div>
+<div class="skills">
+<div class="skill"><h3>Java UI automation</h3><p>Selenium WebDriver, Java, TestNG, Cucumber BDD, Page Object Model, Maven.</p></div>
+<div class="skill"><h3>API and data testing</h3><p>REST Assured, Postman, SQL, JSON schema and integration validation.</p></div>
+<div class="skill"><h3>Modern web automation</h3><p>Playwright, TypeScript, JavaScript, cross-browser testing.</p></div>
+<div class="skill"><h3>Performance and observability</h3><p>JMeter, Datadog dashboards, logs and monitoring.</p></div>
+<div class="skill"><h3>CI/CD and collaboration</h3><p>GitLab CI/CD, GitHub Actions, Git, Jira, Xray and Confluence.</p></div>
+<div class="skill"><h3>Quality engineering</h3><p>Test strategy, risk-based coverage, functional, integration, regression, E2E and release validation.</p></div>
+<div class="skill"><h3>AI-assisted QA</h3><p>LLM-assisted requirement analysis, structured test generation and AI development tools.</p></div>
 </div>
-
+<div class="credentials"><div><h3>Certifications</h3><div class="cred"><strong>ISTQB Certified Tester — Foundation Level v4.0</strong><span>2025</span></div><div class="cred"><strong>JMeter Performance Testing — Udemy</strong><span>2025</span></div><div class="cred"><strong>Jira Fundamentals — Atlassian</strong><span>2023</span></div><div class="cred"><strong>SQL for Testers — LinkedIn Learning</strong><span>2022</span></div><p class="note">Certificate links can be added when public verification URLs are available.</p></div><div><h3>Education</h3><div class="cred"><strong>B.E. · Savitribai Phule Pune University</strong><span>2012–2016</span></div></div></div>
+</div></section>
+<section id="contact"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Let’s connect</p><h2 class="section-title">Build quality into the release.</h2><p class="section-copy">Open to Senior QA Engineer and SDET opportunities in Pune, Hyderabad and Bengaluru.</p></div><span class="section-index">04 / 04</span></div><div class="contactbox"><div><h2>Have a quality engineering challenge?</h2><p>Let’s talk about automation, API quality, performance testing or building a more reliable release process.</p><div class="contactlinks"><a href="mailto:qa.parag.ithape@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/parag-ithape" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/parag-ithape" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="contact-actions"><a class="btn primary" href="Parag_Ithape_Automation_QA_Resume.pdf" target="_blank" rel="noopener">View resume ↗</a><a class="btn secondary" href="mailto:qa.parag.ithape@gmail.com?subject=Senior%20SDET%20opportunity">Email me</a></div></div></div></section></main>
+<footer><div class="wrap footerline"><span>© 2026 Parag Ithape · Quality engineering</span><span>Designed to show work, not just list tools.</span></div></footer></div>
 <script>
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement;
-
-  // Theme toggle, remembered per browser
-  document.getElementById('themeBtn').addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
-
-  // Border under the sticky header once scrolled
-  var top = document.getElementById('top');
-  window.addEventListener('scroll', function () { top.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
-
-  // Release check: each line goes pending -> running -> passed, with a progress bar
-  var rows = document.querySelectorAll('#run li');
-  var bar = document.getElementById('bar');
-  var foot = document.getElementById('runFoot');
-  function finish(li) { li.classList.remove('active'); li.classList.add('done'); li.querySelector('.mk').textContent = '✓'; }
-  if (reduce) {
-    rows.forEach(finish); bar.style.width = '100%'; foot.classList.add('show');
-  } else {
-    var i = 0, step = 320;
-    (function next() {
-      if (i > 0) finish(rows[i - 1]);
-      if (i === rows.length) { foot.classList.add('show'); return; }
-      rows[i].classList.add('active'); rows[i].querySelector('.mk').textContent = '●';
-      bar.style.transition = 'width ' + step + 'ms linear';
-      bar.style.width = ((i + 1) / rows.length * 100) + '%';
-      i++; setTimeout(next, step);
-    })();
-  }
-
-  // Years of experience since Oct 2021, one decimal, so the number never goes stale
-  var start = new Date(2021, 9, 1), now = new Date();
-  var yrs = Math.floor(((now - start) / (365.25 * 24 * 3600 * 1000)) * 10) / 10;
-  var yEl = document.getElementById('yrs');
-  yEl.dataset.count = yrs; yEl.textContent = yrs.toFixed(1) + ' yrs';
-
-  // Count-up numbers, run once when the stats come into view
-  function countUp(el) {
-    var end = +el.dataset.count, from = +(el.dataset.from || 0), suffix = el.dataset.suffix || '', dec = +(el.dataset.decimals || 0), t0 = null, dur = 1200;
-    function frame(t) {
-      if (!t0) t0 = t;
-      var p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = (from + (end - from) * eased).toFixed(dec) + suffix;
-      if (p < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // Reveal sections as they scroll into view
-  var items = document.querySelectorAll('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('in'); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      e.target.querySelectorAll('[data-count]').forEach(countUp);
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.15 });
-  items.forEach(function (el) { io.observe(el); });
-})();
+(function(){const root=document.documentElement;const theme=document.getElementById('theme');try{const saved=localStorage.getItem('portfolio-theme');if(saved)root.dataset.theme=saved}catch(e){}function sync(){theme.textContent=root.dataset.theme==='dark'?'☼':'☾'}sync();theme.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('portfolio-theme',root.dataset.theme)}catch(e){}sync()});const menu=document.getElementById('menu'),links=document.getElementById('navlinks');menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation');menu.textContent=open?'×':'☰'});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));})();
 </script>
-</body>
-</html>
+</body></html>
